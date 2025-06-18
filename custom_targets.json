@@ -1,0 +1,18 @@
+{
+  "CAJU": {
+    "device_name": "CAJU",
+    "inherits": ["MCU_STM32H743xI"],
+    "device_has_add": ["EMAC"],
+    "macros_add": ["STM32H743xx"],
+    "extra_labels_add": ["STM32H743xI", "STM32H7"],
+    "core": "Cortex-M7",
+    "components_add": ["ETHERNET", "USB"],
+    "supported_toolchains": [
+            "GCC_ARM"
+        ],
+     "overrides": {
+            "network-default-interface-type": "ETHERNET"
+            //"clock_source": "USE_PLL_HSE_XTAL"
+        }
+  }
+}
