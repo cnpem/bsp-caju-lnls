@@ -231,32 +231,30 @@ typedef enum {
     USB_OTG_HS_VBUS = PB_13,
 
     /**** ETHERNET pins ****/
-    ETH_COL = PA_3,
-    ETH_CRS = PA_0,
-    ETH_CRS_DV = PA_7,
-    ETH_MDC = PC_1,
-    ETH_MDIO = PA_2,
-    ETH_PPS_OUT = PB_5,
     ETH_REF_CLK = PA_1,
+    ETH_MDIO = PA_2,
+    ETH_CRS_DV = PA_7,  
+    ETH_MDC = PC_1,   
     ETH_RXD0 = PC_4,
     ETH_RXD1 = PC_5,
-    ETH_RXD2 = PB_0,
-    ETH_RXD3 = PB_1,
-    ETH_RX_CLK = PA_1,
-    ETH_RX_DV = PA_7,
-    ETH_RX_ER = PB_10,
+    ETH_TX_EN = PB_11,
     ETH_TXD0 = PB_12,
     ETH_TXD1 = PB_13,
-    ETH_TXD2 = PC_2C,
-    ETH_TXD3 = PE_2,
-    ETH_TXD3_ALT0 = PB_8,
-    ETH_TX_CLK = PC_3C,
-    ETH_TX_EN = PB_11,
-    ETH_TX_ER = PB_2,
-    ETH_TX_ER_ALT0 = PA_9,
+    
+  
+
+   // STDIO for console print
+   #ifdef MBED_CONF_TARGET_STDIO_UART_TX
+      CONSOLE_TX = MBED_CONF_TARGET_STDIO_UART_TX,
+   #else
+      CONSOLE_TX = PD_5,
+   #endif
    
-    // Not connected
-    NC = (int)0xFFFFFFFF
+   #ifdef MBED_CONF_TARGET_STDIO_UART_RX
+      CONSOLE_RX = MBED_CONF_TARGET_STDIO_UART_RX,
+   #else
+      CONSOLE_RX = PD_6,
+   #endif
 
 
   /** Mbed Caju Pin Names **/
@@ -270,7 +268,7 @@ typedef enum {
   p12 = PB_14,
   p13 = PA_9,
   p14 = PA_10,
-  p15 = PC0,
+  p15 = PC_0,
   p16 = PC_2C,
   p17 = PC_3C,
   p18 = PA_4,
@@ -279,7 +277,7 @@ typedef enum {
   p21 = PC_7, 
   p22 = PE_14, 
   p23 = PE_11, 
-  p24 = PE_14, 
+  p24 = PE_13, 
   p25 = PD_15, 
   p26 = PD_14, 
   p27 = PE_0, 
@@ -323,20 +321,12 @@ typedef enum {
   p73 = PA_6,  
   p74 = PA_5,  
 
+  // Not connected
+    NC = (int)0xFFFFFFFF
 
 } PinName;
 
-// STDIO for console print
-#ifdef MBED_CONF_TARGET_STDIO_UART_TX
-    CONSOLE_TX = MBED_CONF_TARGET_STDIO_UART_TX,
-#else
-    CONSOLE_TX = PD_5,
-#endif
-#ifdef MBED_CONF_TARGET_STDIO_UART_RX
-    CONSOLE_RX = MBED_CONF_TARGET_STDIO_UART_RX,
-#else
-    CONSOLE_RX = PD_6,
-#endif
+
 
 // Standardized LED names
 #define LED1     PC_13   
@@ -344,7 +334,6 @@ typedef enum {
 #define LED3     PD_4   
 #define LED4     PE_15   
 
-#define p5
 
 #ifdef __cplusplus
 }
